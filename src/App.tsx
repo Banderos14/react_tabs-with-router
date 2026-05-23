@@ -1,6 +1,13 @@
 import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
-import { Link, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
+import {
+  Link,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useParams,
+} from 'react-router-dom';
 import './App.scss';
 import { Tab } from './types/Tab';
 
@@ -20,7 +27,7 @@ const HomePage = () => (
 
 const TabsPage = () => {
   const { tabId } = useParams<'tabId'>();
-  const selectedTab = tabs.find((tab) => tab.id === tabId);
+  const selectedTab = tabs.find(tab => tab.id === tabId);
 
   return (
     <div className="section">
@@ -29,7 +36,7 @@ const TabsPage = () => {
 
         <div className="tabs is-boxed">
           <ul>
-            {tabs.map((tab) => (
+            {tabs.map(tab => (
               <li
                 key={tab.id}
                 data-cy="Tab"
@@ -63,13 +70,22 @@ const AppNav = () => {
   const isTabsActive = pathname === '/tabs' || pathname.startsWith('/tabs/');
 
   return (
-    <nav className="navbar is-light is-fixed-top is-mobile has-shadow" data-cy="Nav">
+    <nav
+      className="navbar is-light is-fixed-top is-mobile has-shadow"
+      data-cy="Nav"
+    >
       <div className="container">
         <div className="navbar-brand">
-          <Link to="/" className={`navbar-item${isHomeActive ? ' is-active' : ''}`}>
+          <Link
+            to="/"
+            className={`navbar-item${isHomeActive ? ' is-active' : ''}`}
+          >
             Home
           </Link>
-          <Link to="/tabs" className={`navbar-item${isTabsActive ? ' is-active' : ''}`}>
+          <Link
+            to="/tabs"
+            className={`navbar-item${isTabsActive ? ' is-active' : ''}`}
+          >
             Tabs
           </Link>
         </div>
