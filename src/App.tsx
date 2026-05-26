@@ -8,10 +8,15 @@ import {
   useLocation,
   useParams,
 } from 'react-router-dom';
+import classNames from 'classnames';
 import './App.scss';
 import { Tab } from './types/Tab';
 import { Tabs, TabList, Tab as ReactTab, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+
+type TabParams = {
+  tabId?: string;
+};
 
 const tabs: Tab[] = [
   { id: 'tab-1', title: 'Tab 1', content: 'Some text 1' },
@@ -28,7 +33,7 @@ const HomePage = () => (
 );
 
 const TabsPage = () => {
-  const { tabId } = useParams<{ tabId?: string }>();
+  const { tabId } = useParams<TabParams>();
   const selectedIndex = tabs.findIndex(tab => tab.id === tabId);
 
   const tabsProps = {
@@ -101,13 +106,17 @@ const AppNav = () => {
         <div className="navbar-brand">
           <Link
             to="/"
-            className={`navbar-item${isHomeActive ? ' is-active' : ''}`}
+            className={classNames('navbar-item', {
+              'is-active': isHomeActive,
+            })}
           >
             Home
           </Link>
           <Link
             to="/tabs"
-            className={`navbar-item${isTabsActive ? ' is-active' : ''}`}
+            className={classNames('navbar-item', {
+              'is-active': isTabsActive,
+            })}
           >
             Tabs
           </Link>
