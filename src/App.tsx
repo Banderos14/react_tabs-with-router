@@ -43,7 +43,9 @@ const TabsPage = () => {
                 <ReactTab
                   key={tab.id}
                   data-cy="Tab"
-                  selectedClassName={selectedIndex >= 0 ? 'is-active' : undefined}
+                  selectedClassName={
+                    selectedIndex >= 0 ? 'is-active' : undefined
+                  }
                 >
                   <Link to={`/tabs/${tab.id}`}>{tab.title}</Link>
                 </ReactTab>
@@ -53,7 +55,9 @@ const TabsPage = () => {
         </div>
 
         <div className="block" data-cy="TabContent">
-          {selectedIndex >= 0 ? tabs[selectedIndex].content : 'Please select a tab'}
+          {selectedIndex >= 0
+            ? tabs[selectedIndex].content
+            : 'Please select a tab'}
         </div>
       </div>
     </div>
